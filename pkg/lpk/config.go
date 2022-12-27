@@ -48,5 +48,4 @@ func loadYamlFile(filename string, d interface{}) error {
 
 func (c *Config) RegisterFlagsAndApplyDefaults(prefix string, f *flag.FlagSet) {
 	f.IntVar(&c.Port, "port", 636, "ldap connection port")
-	// f.StringVar(&c.OtelEndpoint, "otel_endpoint", "", "otel endpoint, eg: tempo:4317")
 }

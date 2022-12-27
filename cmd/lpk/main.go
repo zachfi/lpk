@@ -70,7 +70,7 @@ func loadConfig() (*lpk.Config, error) {
 	fs := flag.NewFlagSet("", flag.ContinueOnError)
 	fs.SetOutput(io.Discard)
 
-	fs.StringVar(&configFile, configFileOption, "", "")
+	fs.StringVar(&configFile, configFileOption, "/usr/local/etc/lpk.yaml", "")
 	fs.StringVar(&username, usernameOption, "", "")
 
 	// Try to find -config.file & -config.expand-env flags. As Parsing stops on the first error, eg. unknown flag,
