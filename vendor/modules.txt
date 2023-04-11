@@ -55,9 +55,9 @@ github.com/prometheus/common/model
 github.com/prometheus/procfs
 github.com/prometheus/procfs/internal/fs
 github.com/prometheus/procfs/internal/util
-# github.com/xaque208/znet v0.31.6
+# github.com/zachfi/znet v0.31.6
 ## explicit; go 1.13
-github.com/xaque208/znet/pkg/util
+github.com/zachfi/znet/pkg/util
 # golang.org/x/crypto v0.0.0-20210817164053-32db794688a5
 ## explicit; go 1.17
 golang.org/x/crypto/md4

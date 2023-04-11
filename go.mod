@@ -1,4 +1,4 @@
-module github.com/xaque208/lpk
+module github.com/zachfi/lpk
 
 go 1.19
 
@@ -7,7 +7,7 @@ require (
 	github.com/go-ldap/ldap/v3 v3.4.2
 	github.com/grafana/dskit v0.0.0-20220331160727-49faf69f72ca
 	github.com/pkg/errors v0.9.1
-	github.com/xaque208/znet v0.31.6
+	github.com/zachfi/znet v0.31.6
 	gopkg.in/yaml.v2 v2.4.0
 )
 

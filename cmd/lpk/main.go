@@ -22,8 +22,8 @@ import (
 
 	"github.com/go-kit/log/level"
 	"github.com/grafana/dskit/flagext"
-	"github.com/xaque208/lpk/pkg/lpk"
-	"github.com/xaque208/znet/pkg/util"
+	"github.com/zachfi/lpk/pkg/lpk"
+	"github.com/zachfi/znet/pkg/util"
 	yaml "gopkg.in/yaml.v2"
 )
 
