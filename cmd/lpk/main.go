@@ -73,7 +73,7 @@ func main() {
 			OrgID:        cfg.Tracing.OrgID,
 		},
 		logger,
-		"nodemanager",
+		"lpk",
 		versionString(),
 	)
 	if err != nil {
