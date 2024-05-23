@@ -8,6 +8,7 @@ import (
 	"time"
 
 	ldap "github.com/go-ldap/ldap/v3"
+	"github.com/zachfi/zkit/pkg/tracing"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	semconv "go.opentelemetry.io/otel/semconv/v1.25.0"
@@ -31,14 +32,16 @@ func New(cfg Config, logger *slog.Logger) (*Lpk, error) {
 }
 
 func (l *Lpk) Run(ctx context.Context, username string) error {
-	_, span := l.tracer.Start(ctx, "Lpk.Run",
+	var err error
+
+	ctx, span := l.tracer.Start(ctx, "Lpk.Run",
 		trace.WithSpanKind(trace.SpanKindServer),
 		trace.WithAttributes(
 			attribute.String("username", username),
 			attribute.String(string(semconv.ServerAddressKey), l.cfg.Host),
 		),
 	)
-	defer span.End()
+	defer func() { _ = tracing.ErrHandler(span, err, "run failed", l.logger) }()
 
 	results, err := l.query(ctx, username)
 	if err != nil {
@@ -63,17 +66,18 @@ func (l *Lpk) Run(ctx context.Context, username string) error {
 }
 
 func (l *Lpk) query(ctx context.Context, username string) (*ldap.SearchResult, error) {
+	var err error
+
 	_, span := l.tracer.Start(ctx, "Lpk.query",
 		trace.WithSpanKind(trace.SpanKindClient),
 		trace.WithAttributes(
 			attribute.String("username", username),
 			attribute.String(string(semconv.ServerAddressKey), l.cfg.Host),
-			// attribute.String(string(semconv.NetworkPeerAddressKey), l.cfg.Host),
-			// attribute.Int(string(semconv.NetworkPeerPortKey), l.cfg.Port),
 			attribute.String(string(semconv.DBSystemKey), "ldap"),
+			attribute.String(string(semconv.DBNameKey), "ldap"),
 		),
 	)
-	defer span.End()
+	defer func() { _ = tracing.ErrHandler(span, err, "query failed", l.logger) }()
 
 	tlsConfig := &tls.Config{}
 	if l.cfg.InsecureSkipVerify {
