@@ -2,20 +2,22 @@ package lpk
 
 import (
 	"flag"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 
 	"github.com/pkg/errors"
+	"github.com/zachfi/zkit/pkg/tracing"
 	"gopkg.in/yaml.v2"
 )
 
 type Config struct {
-	BindDN             string `yaml:"binddn,omitempty"`
-	BindPW             string `yaml:"bindpw,omitempty"`
-	BaseDN             string `yaml:"basedn,omitempty"`
-	Host               string `yaml:"host,omitempty"`
-	Port               int    `yaml:"port,omitempty"`
-	InsecureSkipVerify bool   `yaml:"insecure_skip_verify,omitempty"`
+	BindDN             string         `yaml:"binddn,omitempty"`
+	BindPW             string         `yaml:"bindpw,omitempty"`
+	BaseDN             string         `yaml:"basedn,omitempty"`
+	Host               string         `yaml:"host,omitempty"`
+	Port               int            `yaml:"port,omitempty"`
+	InsecureSkipVerify bool           `yaml:"insecure_skip_verify,omitempty"`
+	Tracing            tracing.Config `yaml:"tracing"`
 }
 
 // LoadConfig receives a file path for a configuration to load.
@@ -33,7 +35,7 @@ func LoadConfig(file string) (Config, error) {
 
 // loadYamlFile unmarshals a YAML file into the received interface{} or returns an error.
 func loadYamlFile(filename string, d interface{}) error {
-	yamlFile, err := ioutil.ReadFile(filename)
+	yamlFile, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
