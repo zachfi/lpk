@@ -10,3 +10,8 @@ LD_FLAGS=-ldflags " \
 .PHONY: build
 build:
 	@go build $(LD_FLAGS) -o bin/lpk cmd/lpk/main.go
+
+.PHONY: drone
+drone:
+	@drone jsonnet --stream --format
+	@drone lint
