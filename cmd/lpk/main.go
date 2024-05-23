@@ -18,13 +18,12 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log/slog"
 	"os"
 
-	"github.com/go-kit/log/level"
 	"github.com/grafana/dskit/flagext"
 	"github.com/zachfi/lpk/pkg/lpk"
 	"github.com/zachfi/zkit/pkg/tracing"
-	"github.com/zachfi/zkit/pkg/util"
 	yaml "gopkg.in/yaml.v2"
 )
 
@@ -61,11 +60,11 @@ func versionString() string {
 }
 
 func main() {
-	logger := util.NewLogger()
+	logger := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{}))
 
 	cfg, err := loadConfig()
 	if err != nil {
-		_ = level.Error(logger).Log("msg", "failed to load config file", "err", err)
+		logger.Error("failed to load config file", "err", err)
 		os.Exit(1)
 	}
 
@@ -79,19 +78,19 @@ func main() {
 		versionString(),
 	)
 	if err != nil {
-		_ = level.Error(logger).Log("msg", "error initializing tracer", "err", err)
+		logger.Error("error initializing tracer", "err", err)
 		os.Exit(1)
 	}
 	defer shutdownTracer()
 
-	l, err := lpk.New(*cfg)
+	l, err := lpk.New(*cfg, logger)
 	if err != nil {
-		_ = level.Error(logger).Log("msg", "failed to create Lpk", "err", err)
+		logger.Error("failed to create Lpk", "err", err)
 		os.Exit(1)
 	}
 
 	if err := l.Run(username); err != nil {
-		_ = level.Error(logger).Log("msg", "error running Lpk", "err", err)
+		logger.Error("error running LPK", "err", err)
 		os.Exit(1)
 	}
 }

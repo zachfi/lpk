@@ -3,26 +3,24 @@ package lpk
 import (
 	"crypto/tls"
 	"fmt"
+	"log/slog"
 	"time"
 
-	"github.com/go-kit/log"
 	ldap "github.com/go-ldap/ldap/v3"
-	"github.com/zachfi/zkit/pkg/util"
 )
 
 type Lpk struct {
 	cfg    Config
-	logger log.Logger
+	logger *slog.Logger
 }
 
-func New(cfg Config) (*Lpk, error) {
-	z := &Lpk{
-		cfg: cfg,
+func New(cfg Config, logger *slog.Logger) (*Lpk, error) {
+	l := &Lpk{
+		cfg:    cfg,
+		logger: logger,
 	}
 
-	z.logger = util.NewLogger()
-
-	return z, nil
+	return l, nil
 }
 
 func (l *Lpk) Run(username string) error {
