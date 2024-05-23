@@ -28,11 +28,7 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
-var (
-	username     string
-	otelEndpoint string
-	orgID        string
-)
+var username string
 
 var (
 	goos      = "unknown"
@@ -71,8 +67,8 @@ func main() {
 
 	shutdownTracer, err := tracing.InstallOpenTelemetryTracer(
 		&tracing.Config{
-			OtelEndpoint: otelEndpoint,
-			OrgID:        orgID,
+			OtelEndpoint: cfg.Tracing.OtelEndpoint,
+			OrgID:        cfg.Tracing.OrgID,
 		},
 		logger,
 		"nodemanager",
@@ -113,6 +109,8 @@ func loadConfig() (*lpk.Config, error) {
 
 	fs.StringVar(&configFile, configFileOption, "/usr/local/etc/lpk.yaml", "")
 	fs.StringVar(&username, usernameOption, "", "")
+
+	config.Tracing.RegisterFlagsAndApplyDefaults("tracing", fs)
 
 	// Try to find -config.file & -config.expand-env flags. As Parsing stops on the first error, eg. unknown flag,
 	// we simply try remaining parameters until we find config flag, or there are no params left.
