@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-kit/log"
 	ldap "github.com/go-ldap/ldap/v3"
-	"github.com/zachfi/znet/pkg/util"
+	"github.com/zachfi/zkit/pkg/util"
 )
 
 type Lpk struct {
