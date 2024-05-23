@@ -15,3 +15,7 @@ build:
 drone:
 	@drone jsonnet --stream --format
 	@drone lint
+
+.PHONY: lint
+lint:
+	@golangci-lint run
