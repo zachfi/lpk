@@ -15,6 +15,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"io"
@@ -89,7 +90,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := l.Run(username); err != nil {
+	if err := l.Run(context.Background(), username); err != nil {
 		logger.Error("error running LPK", "err", err)
 		os.Exit(1)
 	}
