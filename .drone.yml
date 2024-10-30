@@ -6,3 +6,8 @@ steps:
   - make build
   image: zachfi/shell:latest
   name: build
+---
+kind: signature
+hmac: d07369ab2fe3a80b8861ed60bd166c5413bced8ae92a708c7ba0f8d659253329
+
+...
