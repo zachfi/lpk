@@ -1,5 +1,3 @@
-local image = 'zachfi/shell:latest';
-
 local pipeline(name) = {
   kind: 'pipeline',
   name: name,
@@ -8,14 +6,22 @@ local pipeline(name) = {
   // volumes: [],
 };
 
+local step(name) = {
+  name: name,
+  image: 'zachfi/build-image',
+  pull: 'always',
+  commands: [],
+};
+
+
+local make(target) = step(target) {
+  commands: ['make %s' % target],
+};
+
 [
   pipeline('build') {
     steps: [
-      {
-        name: 'build',
-        image: image,
-        commands: ['make build'],
-      },
+      make('build'),
     ],
   },
 ]
