@@ -15,13 +15,5 @@ build:
 lint:
 	@golangci-lint run
 
-.PHONY: drone drone-signature
-drone:
-	@drone jsonnet --stream --format
-	@drone lint --trusted
-
-drone-signature:
-ifndef DRONE_TOKEN
-	$(error DRONE_TOKEN is not set, visit https://drone.zach.fi/account)
-endif
-	@DRONE_SERVER=https://drone.zach.fi drone sign --save zachfi/iotcontroller .drone.yml
+include build/release.mk
+include build/drone.mk
