@@ -4,6 +4,13 @@ local pipeline(name) = {
   steps: [],
   // depends_on: [],
   // volumes: [],
+  trigger: {
+    ref: [
+      'refs/heads/main',
+      'refs/heads/dependabot/**',
+      'refs/tags/v*',
+    ],
+  },
 };
 
 local step(name) = {

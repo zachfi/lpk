@@ -7,8 +7,13 @@ steps:
   image: zachfi/build-image
   name: build
   pull: always
+trigger:
+  ref:
+  - refs/heads/main
+  - refs/heads/dependabot/**
+  - refs/tags/v*
 ---
 kind: signature
-hmac: 32dd34e94c5bc8930ec3b2d5ae2a751e7bfbb53ed8e23cb4d0c4a574b9d55a04
+hmac: c10d27152cff3beefdf26d8c560591f50b7958292153192749d281a5b683a277
 
 ...
