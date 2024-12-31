@@ -20,7 +20,7 @@ github.com/go-asn1-ber/asn1-ber
 ## explicit; go 1.17
 github.com/go-kit/log
 github.com/go-kit/log/level
-# github.com/go-ldap/ldap/v3 v3.4.9
+# github.com/go-ldap/ldap/v3 v3.4.10
 ## explicit; go 1.14
 github.com/go-ldap/ldap/v3
 # github.com/go-logfmt/logfmt v0.6.0
@@ -125,7 +125,7 @@ go.opentelemetry.io/proto/otlp/trace/v1
 # golang.org/x/crypto v0.31.0
 ## explicit; go 1.20
 golang.org/x/crypto/md4
-# golang.org/x/net v0.32.0
+# golang.org/x/net v0.33.0
 ## explicit; go 1.18
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
