@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.24.1
 
 require (
-	github.com/go-ldap/ldap/v3 v3.4.11
+	github.com/go-ldap/ldap/v3 v3.4.12
 	github.com/grafana/dskit v0.0.0-20240515021350-ab41af527fd5
 	github.com/pkg/errors v0.9.1
 	github.com/zachfi/zkit v0.1.2
