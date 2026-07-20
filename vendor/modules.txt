@@ -14,15 +14,15 @@ github.com/cenkalti/backoff/v5
 # github.com/cespare/xxhash/v2 v2.3.0
 ## explicit; go 1.11
 github.com/cespare/xxhash/v2
-# github.com/go-asn1-ber/asn1-ber v1.5.8-0.20250403174932-29230038a667
+# github.com/go-asn1-ber/asn1-ber v1.5.8
 ## explicit; go 1.13
 github.com/go-asn1-ber/asn1-ber
 # github.com/go-kit/log v0.2.1
 ## explicit; go 1.17
 github.com/go-kit/log
 github.com/go-kit/log/level
-# github.com/go-ldap/ldap/v3 v3.4.13
-## explicit; go 1.24.0
+# github.com/go-ldap/ldap/v3 v3.4.14
+## explicit; go 1.25.0
 github.com/go-ldap/ldap/v3
 # github.com/go-logfmt/logfmt v0.6.1
 ## explicit; go 1.21
@@ -140,10 +140,10 @@ go.yaml.in/yaml/v2
 # go.yaml.in/yaml/v3 v3.0.4
 ## explicit; go 1.16
 go.yaml.in/yaml/v3
-# golang.org/x/crypto v0.50.0
+# golang.org/x/crypto v0.54.0
 ## explicit; go 1.25.0
 golang.org/x/crypto/md4
-# golang.org/x/net v0.53.0
+# golang.org/x/net v0.57.0
 ## explicit; go 1.25.0
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
@@ -153,12 +153,12 @@ golang.org/x/net/internal/httpcommon
 golang.org/x/net/internal/httpsfv
 golang.org/x/net/internal/timeseries
 golang.org/x/net/trace
-# golang.org/x/sys v0.43.0
+# golang.org/x/sys v0.47.0
 ## explicit; go 1.25.0
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 golang.org/x/sys/windows/registry
-# golang.org/x/text v0.36.0
+# golang.org/x/text v0.40.0
 ## explicit; go 1.25.0
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
